@@ -1,13 +1,7 @@
 services:
   - type: web
-    name: django-backend
-    runtime: python
-    buildCommand: ""
-    startCommand: "gunicorn backend.wsgi:application"
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: backend.settings
-      - key: SECRET_KEY
-        value: your-secret-key
-      - key: ALLOWED_HOSTS
-        value: your-subdomain.onrender.com
+    name: potent-backend
+    env: python
+    buildCommand: pip install Django gunicorn psycopg2-binary djangorestframework
+    startCommand: gunicorn potent.wsgi:application
+    plan: free
